@@ -24,8 +24,8 @@ public class Buffet {
     private String descrizione;
     
     
-    //ha senso dire che se vado a vedere un buffet voglio necessariamente
-    //vedere i suoi piatti
+    /*ha senso dire che se vado a vedere un buffet 
+    voglio necessariamente vedere i suoi piatti*/
     @OneToMany(mappedBy = "buffet", fetch = FetchType.EAGER)   
     private List<Piatto> piatti;
     
