@@ -1,4 +1,4 @@
-package com.example.demo;
+package it.uniroma3.SIW.progettoCatering;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
