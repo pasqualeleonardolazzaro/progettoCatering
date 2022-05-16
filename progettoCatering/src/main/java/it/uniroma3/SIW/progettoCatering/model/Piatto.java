@@ -25,7 +25,7 @@ public class Piatto {
     private List<Ingrediente> ingredienti;
     
     @ManyToOne
-    private List<Buffet> buffet;
+    private Buffet buffet;
 
 	public Long getId() {
 		return id;
@@ -59,11 +59,11 @@ public class Piatto {
 		this.ingredienti = ingredienti;
 	}
 
-	public List<Buffet> getBuffet() {
+	public Buffet getBuffet() {
 		return buffet;
 	}
 
-	public void setBuffet(List<Buffet> buffet) {
+	public void setBuffet(Buffet buffet) {
 		this.buffet = buffet;
 	}
     
