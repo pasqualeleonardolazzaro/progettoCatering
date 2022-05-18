@@ -23,11 +23,19 @@ public class ChefService {
 		return chefRepository.findById(id).get();
 	}
 	
+	public boolean alreadyExists(Chef chef) {
+		return chefRepository.existsByNomeAndCognomeAndNazionalita(chef.getNome(), chef.getCognome(), chef.getNazionalita());
+	}
+	
 	public List<Chef> findAll(){
 		List<Chef> chefs = new ArrayList<Chef>();
 		for(Chef c : chefRepository.findAll()) {
 			chefs.add(c);
 		}
 		return chefs;
+	}
+
+	public void remove(Long id) {
+		chefRepository.deleteById(id);
 	}
 }

@@ -2,42 +2,42 @@
 <html>
 
 <head>
-	<title> Home Page: Catering Management </title>
-	<link rel="stylesheet" href= "main.css">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
+<title>Home Page: Catering Management</title>
+<link rel="stylesheet" th:href="@{/css/main.css}" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap"
+	rel="stylesheet">
 </head>
-
 <body>
-	<section class = "header">
+	<section class="header">
 		<nav>
 			<img src="img/logo.png">
-			<h1 class = "title" > The Catering Company </h1>
+			<h1 class="title">The Catering Company</h1>
 			<div class="nav-links">
 				<ul>
-					<li><a href=""> HOME </a></li>
+					<li><a href="/"> HOME </a></li>
 					<li><a href=""> ABOUT </a></li>
-					<li><a href=""> CHEFS </a></li>
+					<li><a th:href="@{/chef}"> CHEFS </a></li>
 					<li><a href=""> CONTACT </a></li>
 				</ul>
 			</div>
 		</nav>
-		
-		<div class = "text-box">
-		<h1>This site allows you to choose youre favourite type of Catering</h1>
-		<p>blablablablabla</p>		
+
+		<div class="text-box">
+			<h1>This site allows you to choose youre favourite type of
+				Catering</h1>
+			<p>blablablablabla</p>
 		</div>
-		
+
 	</section>
 	<!-- - Footer - -->
-	
-	<footer>
-	ewlkgn
-	</footer>
-	
-	
-	
+
+	<footer> ewlkgn </footer>
+
+
+
 </body>
 
 </html>
