@@ -22,6 +22,15 @@
 	background-position: relative;
 }
 
+.header-buffet {
+	min-height: 100vh;
+	width: 100%;
+	background-image: linear-gradient(rgba(4, 9, 30, 0.7),
+		rgba(4, 9, 30, 0.7)), url(../img/buffet.jpg);
+	background-size: cover;
+	background-position: relative;
+}
+
 
 
 nav {
@@ -78,15 +87,29 @@ nav img {
 	margin: auto;
 }
 
-.elenco-chef {
-	width: 90%;
+.form-box {
+	float: right;
+	width: 45%;
 	color: white;
-	text-align: left;
-	margin-top: 100px;
+	background: rgb(255, 255, 255, .2);
+	text-align: justify;
+	margin: 0 auto;
+	font-size: 28px;
+	border-radius: 8px;
+}
+
+.elenco-elem {
+	float: left;
+	border-radius: 8px;
+	width: 45%;
+	color: white;
+	background: rgb(255, 255, 255, .2);
+	text-align: center;
+	margin: 0 auto;
 	font-size: 28px;
 }
 
-.elenco-chef form button  {
+.elenco-elem form button  {
 	font-size: 20px;
 }
 
@@ -97,12 +120,13 @@ nav img {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	text-align: center;
+	text-align: justify;
 }
 
 .text-box form {
 	font-size: 35px;
-	text-align: right;
+	text-align: center;
+	display: inline-block;
 }
 
 .text-box button {

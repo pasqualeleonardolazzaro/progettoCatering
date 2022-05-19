@@ -63,6 +63,16 @@ public class Buffet {
 	public void setPiatti(List<Piatto> piatti) {
 		this.piatti = piatti;
 	}
+
+	public Chef getChef() {
+		return chef;
+	}
+
+	public void setChef(Chef chef) {
+		this.chef = chef;
+	}
+	
+	
        
 }
 

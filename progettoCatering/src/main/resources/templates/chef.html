@@ -2,8 +2,8 @@
 <html>
 
 <head>
-<title>Chef Page: Catering Management</title>
-<link rel="stylesheet" th:href="@{/css/main.css}" />
+<title>Chef Page Form: Catering Management</title>
+<link rel="stylesheet" href="css/main.css" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
@@ -20,41 +20,47 @@
 					<li><a href="/"> HOME </a></li>
 					<li><a href=""> ABOUT </a></li>
 					<li><a th:href="@{/chef}"> CHEFS </a></li>
+					<li><a th:href="@{/buffetForm}"> BUFFETS </a></li>
 					<li><a href=""> CONTACT </a></li>
 				</ul>
 			</div>
 		</nav>
 
 		<div class="text-box">
-			<form th:action="@{/chef}" method="post" th:object="${chef}">
-				<div>
-					nome: <input type="text" th:field="*{nome}" />
-				</div>
-				<div>
-					cognome: <input type="text" th:field="*{cognome}" />
-				</div>
-				<div>
-					nazionalita: <input type="text" th:field="*{nazionalita}" />
-				</div>
-				<div>
-					<button type="submit" />
-					Conferma
-					</button>
-				</div>
-			</form>
+			<div class="form-box">
+				<form th:action="@{/chef}" method="post" th:object="${chef}">
+					<div>
+						Nome: <input type="text" th:field="*{nome}" />
+					</div>
+					<div>
+						Cognome: <input type="text" th:field="*{cognome}" />
+					</div>
+					<div>
+						Nazionalita: <input type="text" th:field="*{nazionalita}" />
+					</div>
+					<div>
+						<button type="submit" />
+						Conferma
+						</button>
+					</div>
+				</form>
+			</div>
+			<div class="elenco-elem">
+				<h4>Elenco chef:</h4>
+				<ul>
+					<li th:each="chef : ${chefs}"><a
+						th:text="${chef.nome} + ' ' + ${chef.cognome} + ' ' + ${chef.nazionalita}">Paolo
+							Rossi 18</a>
+						<form th:action="@{'/cancellaChef' + '/' + ${chef.id}}"
+							method="post">
+							<button>Cancella Chef</button>
+						</form></li>
+				</ul>
+
+			</div>
 		</div>
 
-		<div class="elenco-chef">
-			<h4>Elenco chef:</h4>
-			<ul>
-				<li th:each="chef : ${chefs}"><a
-					th:text="${chef.nome} + ' ' + ${chef.cognome} + ' ' + ${chef.nazionalita}">Paolo
-						Rossi 18</a>
-					<form th:action="@{'/cancellaChef' + '/' + ${chef.id}}"
-						method="post"><button>Cancella Chef</button></form></li>
-			</ul>
 
-		</div>
 
 	</section>
 	<!-- - Footer - -->
