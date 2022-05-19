@@ -21,6 +21,7 @@
 					<li><a href=""> ABOUT </a></li>
 					<li><a th:href="@{/chef}"> CHEFS </a></li>
 					<li><a th:href="@{/buffetForm}"> BUFFETS </a></li>
+					<li><a th:href="@{/ingredientiForm}"> INGREDIENTI </a></li>
 					<li><a href=""> CONTACT </a></li>
 				</ul>
 			</div>
@@ -36,11 +37,11 @@
 						Descrizione: <input type="text" th:field="*{descrizione}" />
 					</div>
 					<div>
-						Chef:
-						<select th:field= "*{chef}">
-						<th:block th:each="chef : ${listChefs} ">
-							<option th:text = "${chef.nome} + ' ' + ${chef.cognome} " th:value="${chef.id}">
-						</th:block>
+						Chef: <select th:field="*{chef}">
+							<th:block th:each="chef : ${listChefs} ">
+								<option th:text="${chef.nome} + ' ' + ${chef.cognome} "
+									th:value="${chef.id}">
+							</th:block>
 						</select>
 					</div>
 					<div>
