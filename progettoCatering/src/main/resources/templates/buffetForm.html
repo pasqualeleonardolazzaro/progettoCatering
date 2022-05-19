@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Chef Page Form: Catering Management</title>
+<link rel="stylesheet" href="css/main.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap"
+	rel="stylesheet">
+</head>
+<body>
+	<section class="header-buffet">
+		<nav>
+			<img src="img/logo.png">
+			<h1 class="title">The Catering Company</h1>
+			<div class="nav-links">
+				<ul>
+					<li><a href="/"> HOME </a></li>
+					<li><a href=""> ABOUT </a></li>
+					<li><a th:href="@{/chef}"> CHEFS </a></li>
+					<li><a th:href="@{/buffetForm}"> BUFFETS </a></li>
+					<li><a href=""> CONTACT </a></li>
+				</ul>
+			</div>
+		</nav>
+
+		<div class="text-box">
+			<div class="form-box">
+				<form th:action="@{/buffetForm}" method="post" th:object="${buffet}">
+					<div>
+						Nome: <input type="text" th:field="*{nome}" />
+					</div>
+					<div>
+						Descrizione: <input type="text" th:field="*{descrizione}" />
+					</div>
+					<div>
+						Chef:
+						<select th:field= "*{chef}">
+						<th:block th:each="chef : ${listChefs} ">
+							<option th:text = "${chef.nome} + ' ' + ${chef.cognome} " th:value="${chef.id}">
+						</th:block>
+						</select>
+					</div>
+					<div>
+						<button type="submit" />
+						Conferma
+						</button>
+					</div>
+				</form>
+			</div>
+			<div class="elenco-elem">
+				<h4>Elenco buffet:</h4>
+				<ul>
+					<li th:each="buffet : ${buffets}"><a
+						th:text="${buffet.nome} + ' ' + ${buffet.descrizione} + '-made by: ' + ${buffet.chef.nome}+ ' ' + ${buffet.chef.cognome}">...</a>
+						<form th:action="@{'/cancellaBuffet' + '/' + ${buffet.id}}"
+							method="post">
+							<button>Cancella Buffet</button>
+						</form></li>
+				</ul>
+
+			</div>
+		</div>
+
+
+
+	</section>
+	<!-- - Footer - -->
+
+	<footer> ewlkgn </footer>
+
+
+
+</body>
+
+</html>
