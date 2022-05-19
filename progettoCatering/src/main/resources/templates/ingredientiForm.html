@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Ingredienti Page Form: Catering Management</title>
+<link rel="stylesheet" href="css/main.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap"
+	rel="stylesheet">
+</head>
+<body>
+	<section class="header-ingredienti">
+		<nav>
+			<img src="img/logo.png">
+			<h1 class="title">The Catering Company</h1>
+			<div class="nav-links">
+				<ul>
+					<li><a href="/"> HOME </a></li>
+					<li><a href=""> ABOUT </a></li>
+					<li><a th:href="@{/chef}"> CHEFS </a></li>
+					<li><a th:href="@{/buffetForm}"> BUFFETS </a></li>
+					<li><a th:href="@{/ingredientiForm}"> INGREDIENTI </a></li>
+					<li><a href=""> CONTACT </a></li>
+				</ul>
+			</div>
+		</nav>
+
+		<div class="text-box">
+			<div class="form-box">
+				<form th:action="@{/ingredienteForm}" method="post" th:object="${ingrediente}">
+					<div>
+						Nome: <input type="text" th:field="*{nome}" />
+					</div>
+					<div>
+						Origine: <input type="text" th:field="*{origine}" />
+					</div>
+					<div>
+						Descrizione: <input type="text" th:field="*{descrizione}" />
+					</div>
+					<div>
+						<button type="submit" />
+						Conferma
+						</button>
+					</div>
+				</form>
+			</div>
+			<div class="elenco-elem">
+				<h4>Elenco ingredienti:</h4>
+				<ul>
+					<li th:each="ingrediente : ${ingredienti}"><a
+						th:text="${ingrediente.nome} + ' ' + ${ingrediente.origine} + ' ' + ${ingrediente.descrizione}">...</a>
+						<form th:action="@{'/cancellaIngrediente' + '/' + ${ingrediente.id}}"
+							method="post">
+							<button>Cancella</button>
+						</form></li>
+				</ul>
+
+			</div>
+		</div>
+
+
+
+	</section>
+	<!-- - Footer - -->
+
+	<footer> ewlkgn </footer>
+
+
+
+</body>
+
+</html>
