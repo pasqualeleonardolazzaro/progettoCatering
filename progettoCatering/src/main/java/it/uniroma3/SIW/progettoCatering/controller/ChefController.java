@@ -34,6 +34,8 @@ public class ChefController {
 			model.addAttribute("chef", chef);
 			return "redirect:/chef";
 		}
+		List<Chef>chefs = chefService.findAll();
+		model.addAttribute("chefs", chefs);
 		return "chef.html";
 	}
 

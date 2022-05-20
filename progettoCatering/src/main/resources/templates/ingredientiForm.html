@@ -22,6 +22,7 @@
 					<li><a th:href="@{/chef}"> CHEFS </a></li>
 					<li><a th:href="@{/buffetForm}"> BUFFETS </a></li>
 					<li><a th:href="@{/ingredientiForm}"> INGREDIENTI </a></li>
+					<li><a th:href="@{/piattiForm}"> PIATTI </a></li>
 					<li><a href=""> CONTACT </a></li>
 				</ul>
 			</div>
@@ -29,15 +30,29 @@
 
 		<div class="text-box">
 			<div class="form-box">
-				<form th:action="@{/ingredienteForm}" method="post" th:object="${ingrediente}">
+				<form th:action="@{/ingredienteForm}" method="post"
+					th:object="${ingrediente}">
+					<div th:if="${#fields.hasGlobalErrors()}">
+						<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">Errore
+							globale</p>
+					</div>
 					<div>
 						Nome: <input type="text" th:field="*{nome}" />
+						<div>
+							<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+						</div>
 					</div>
 					<div>
 						Origine: <input type="text" th:field="*{origine}" />
+						<div>
+							<span th:if="${#fields.hasErrors('origine')}" th:errors="*{origine}"></span>
+						</div>
 					</div>
 					<div>
 						Descrizione: <input type="text" th:field="*{descrizione}" />
+						<div>
+							<span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span>
+						</div>
 					</div>
 					<div>
 						<button type="submit" />
@@ -51,7 +66,8 @@
 				<ul>
 					<li th:each="ingrediente : ${ingredienti}"><a
 						th:text="${ingrediente.nome} + ' ' + ${ingrediente.origine} + ' ' + ${ingrediente.descrizione}">...</a>
-						<form th:action="@{'/cancellaIngrediente' + '/' + ${ingrediente.id}}"
+						<form
+							th:action="@{'/cancellaIngrediente' + '/' + ${ingrediente.id}}"
 							method="post">
 							<button>Cancella</button>
 						</form></li>

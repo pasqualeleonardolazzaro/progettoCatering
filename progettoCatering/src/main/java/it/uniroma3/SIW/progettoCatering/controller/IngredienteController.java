@@ -35,6 +35,8 @@ public class IngredienteController {
 			model.addAttribute("ingrediente", ingrediente);
 			return "redirect:/ingredientiForm";
 		}
+		List<Ingrediente>ingredienti = ingredienteService.findAll();
+		model.addAttribute("ingredienti", ingredienti);
 		return "ingredientiForm.html";
 	}
 

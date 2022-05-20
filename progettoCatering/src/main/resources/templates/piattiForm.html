@@ -11,7 +11,7 @@
 	rel="stylesheet">
 </head>
 <body>
-	<section class="header-chef">
+	<section class="header-piatti">
 		<nav>
 			<img src="img/logo.png">
 			<h1 class="title">The Catering Company</h1>
@@ -30,7 +30,7 @@
 
 		<div class="text-box">
 			<div class="form-box">
-				<form th:action="@{/chef}" method="post" th:object="${chef}">
+				<form th:action="@{/piattiForm}" method="post" th:object="${piatto}">
 					<div th:if="${#fields.hasGlobalErrors()}">
 						<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">Errore
 							globale</p>
@@ -42,16 +42,26 @@
 						</div>
 					</div>
 					<div>
-						Cognome: <input type="text" th:field="*{cognome}" />
+						Descrizione: <input type="text" th:field="*{descrizione}" />
 						<div>
-							<span th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></span>
+							<span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span>
 						</div>
 					</div>
 					<div>
-						Nazionalita: <input type="text" th:field="*{nazionalita}" />
-						<div>
-							<span th:if="${#fields.hasErrors('nazionalita')}" th:errors="*{nazionalita}"></span>
-						</div>
+						Buffet:<select th:field="*{buffet}">
+							<th:block th:each="buffet : ${listBuffets} ">
+								<option
+									th:text="${buffet.nome} + ' ' + ${buffet.descrizione} + '-made by: ' + ${buffet.chef.nome} + ' ' + ${buffet.chef.cognome}"
+									th:value="${buffet.id}">
+							</th:block>
+						</select>
+					</div>
+					<div>
+						Ingredienti:
+						<th:block th:each="ingrediente : ${listIngredients} ">
+							<input type="checkbox" th:field="*{ingredienti}"
+								th:text="${ingrediente.nome}" th:value="${ingrediente.id}">
+						</th:block>
 					</div>
 					<div>
 						<button type="submit" />
@@ -61,14 +71,13 @@
 				</form>
 			</div>
 			<div class="elenco-elem">
-				<h4>Elenco chef:</h4>
+				<h4>Elenco Piatti:</h4>
 				<ul>
-					<li th:each="chef : ${chefs}"><a
-						th:text="${chef.nome} + ' ' + ${chef.cognome} + ' ' + ${chef.nazionalita}">Paolo
-							Rossi 18</a>
-						<form th:action="@{'/cancellaChef' + '/' + ${chef.id}}"
+					<li th:each="piatto : ${piatti}"><a
+						th:text="${piatto.nome} + ' ' + ${piatto.descrizione}+ ' nel buffet: ' + ' ' + ${piatto.buffet.nome} + '-made by: ' + ${piatto.buffet.chef.nome}+ ' ' + ${piatto.buffet.chef.cognome}">...</a>
+						<form th:action="@{'/cancellaPiatto' + '/' + ${piatto.id}}"
 							method="post">
-							<button>Cancella Chef</button>
+							<button>Cancella Piatto</button>
 						</form></li>
 				</ul>
 
