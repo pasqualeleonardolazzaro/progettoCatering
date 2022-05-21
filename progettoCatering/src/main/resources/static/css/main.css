@@ -13,6 +13,12 @@
 	background-position: relative;
 }
 
+button {
+	border-radius: 6px;
+	background-color:#d4c7a3;
+	border: none;
+}
+
 .header-chef {
 	min-height: 100vh;
 	width: 100%;
@@ -123,6 +129,7 @@ nav img {
 	text-align: center;
 	margin: 0 auto;
 	font-size: 28px;
+	list-style-position: inside;
 }
 
 .elenco {
@@ -134,11 +141,12 @@ nav img {
 	text-align: center;
 	margin: 0 auto;
 	font-size: 28px;
+	list-style-position: inside;
 }
 
 
-.elenco-elem form button  {
-	font-size: 20px;
+.elenco-elem button  {
+	font-size: 22px;
 }
 
 .text-box {
