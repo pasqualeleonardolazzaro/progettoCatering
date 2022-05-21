@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import it.uniroma3.SIW.progettoCatering.model.Chef;
+import it.uniroma3.SIW.progettoCatering.service.BuffetService;
 import it.uniroma3.SIW.progettoCatering.service.ChefService;
 import it.uniroma3.SIW.progettoCatering.validator.ChefValidator;
 
@@ -53,5 +54,13 @@ public class ChefController {
 		model.addAttribute("chefs", chefs);
 		return "chef.html";
 	}
+	
+	//id tra graffe perchè indica un parametro
+	  @GetMapping("/buffet/{id}")
+	  public String getBuffetPerChef(@PathVariable("id") Long id, Model model) {
+		  Chef chef = chefService.findById(id);
+		  model.addAttribute("chef", chef);
+		  return "buffetPerChef.html";
+	  }
 
 }

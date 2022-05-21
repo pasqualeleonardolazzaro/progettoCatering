@@ -71,5 +71,12 @@ public class PiattoController {
 		model.addAttribute("listIngredients", listIngredients);
 		return "piattiForm.html";
 	}
+	
+	@GetMapping("/ingredienti/{id}")
+	public String getPiattoPerBuffet(@PathVariable("id") Long id, Model model) {
+		  Piatto piatto = piattoService.findById(id);
+		  model.addAttribute("piatto", piatto);
+		  return "ingredientiPerPiatto.html";
+	  }
 
 }

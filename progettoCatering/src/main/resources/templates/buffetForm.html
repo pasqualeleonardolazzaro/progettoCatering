@@ -44,7 +44,8 @@
 					<div>
 						Descrizione: <input type="text" th:field="*{descrizione}" />
 						<div>
-							<span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span>
+							<span th:if="${#fields.hasErrors('descrizione')}"
+								th:errors="*{descrizione}"></span>
 						</div>
 					</div>
 					<div>
@@ -54,6 +55,9 @@
 									th:value="${chef.id}">
 							</th:block>
 						</select>
+						<div>
+							<span th:if="${#fields.hasErrors('chef')}" th:errors="*{chef}"></span>
+						</div>
 					</div>
 					<div>
 						<button type="submit" />
@@ -70,7 +74,9 @@
 						<form th:action="@{'/cancellaBuffet' + '/' + ${buffet.id}}"
 							method="post">
 							<button>Cancella Buffet</button>
-						</form></li>
+						</form> <a href="buffetPerChef.html"
+						th:href="@{'/piatti' + '/' + ${buffet.id}}"><button>Vedi
+								Piatti Proposti</button> </a></li>
 				</ul>
 
 			</div>

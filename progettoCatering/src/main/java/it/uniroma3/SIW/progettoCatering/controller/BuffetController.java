@@ -62,4 +62,11 @@ public class BuffetController {
 		model.addAttribute("listChefs", listChefs);
 		return "buffetForm.html";
 	}
+	
+	@GetMapping("/piatti/{id}")
+	public String getPiattoPerBuffet(@PathVariable("id") Long id, Model model) {
+		  Buffet buffet = buffetService.findById(id);
+		  model.addAttribute("buffet", buffet);
+		  return "piattiPerBuffet.html";
+	  }
 }

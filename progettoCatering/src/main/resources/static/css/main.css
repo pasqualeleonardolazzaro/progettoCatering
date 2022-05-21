@@ -125,6 +125,18 @@ nav img {
 	font-size: 28px;
 }
 
+.elenco {
+	float: none;
+	border-radius: 8px;
+	width: 45%;
+	color: white;
+	background: rgb(255, 255, 255, .2);
+	text-align: center;
+	margin: 0 auto;
+	font-size: 28px;
+}
+
+
 .elenco-elem form button  {
 	font-size: 20px;
 }

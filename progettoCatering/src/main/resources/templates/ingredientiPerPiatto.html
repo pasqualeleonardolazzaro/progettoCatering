@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Ingredienti Page Form: Catering Management</title>
+<link rel="stylesheet" href="../css/main.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap"
+	rel="stylesheet">
+</head>
+<body>
+	<section class="header-ingredienti">
+		<nav>
+			<img src="../img/logo.png">
+			<h1 class="title">The Catering Company</h1>
+			<div class="nav-links">
+				<ul>
+					<li><a href="/"> HOME </a></li>
+					<li><a href=""> ABOUT </a></li>
+					<li><a th:href="@{/chef}"> CHEFS </a></li>
+					<li><a th:href="@{/buffetForm}"> BUFFETS </a></li>
+					<li><a th:href="@{/ingredientiForm}"> INGREDIENTI </a></li>
+					<li><a th:href="@{/piattiForm}"> PIATTI </a></li>
+					<li><a href=""> CONTACT </a></li>
+				</ul>
+			</div>
+		</nav>
+
+		<div class="text-box">
+			<div class="elenco">
+			<h1>
+					<a th:text="${piatto.nome} + ': ' + ${piatto.descrizione}">...</a>
+				</h1>
+				<h4>Elenco ingredienti:</h4>
+				<ul>
+					<li th:each="ingrediente : ${piatto.ingredienti}"><a
+						th:text="${ingrediente.nome} + ',origine: ' + ${ingrediente.origine} + ',descrizione: ' + ${ingrediente.descrizione}">...</a>
+						</li>
+				</ul>
+
+			</div>
+		</div>
+
+
+
+	</section>
+	<!-- - Footer - -->
+
+	<footer> ewlkgn </footer>
+
+
+
+</body>
+
+</html>

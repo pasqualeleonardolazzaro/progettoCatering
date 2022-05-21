@@ -1,5 +1,6 @@
 package it.uniroma3.SIW.progettoCatering.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Piatto {
@@ -21,11 +23,17 @@ public class Piatto {
     
     private String descrizione;
     
+    @NotNull
     @ManyToMany
     private List<Ingrediente> ingredienti;
     
+    @NotNull
     @ManyToOne
     private Buffet buffet;
+    
+    public Piatto() {
+    	this.ingredienti = new ArrayList<>();
+    }
 
 	public Long getId() {
 		return id;
@@ -65,6 +73,11 @@ public class Piatto {
 
 	public void setBuffet(Buffet buffet) {
 		this.buffet = buffet;
+	}
+
+	public void addIngrediente(Ingrediente i) {
+		this.getIngredienti().add(i);
+		
 	}
     
     
