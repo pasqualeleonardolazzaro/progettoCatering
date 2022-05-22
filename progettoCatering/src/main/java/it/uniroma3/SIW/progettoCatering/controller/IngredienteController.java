@@ -37,7 +37,7 @@ public class IngredienteController {
 		}
 		List<Ingrediente>ingredienti = ingredienteService.findAll();
 		model.addAttribute("ingredienti", ingredienti);
-		return "ingredientiForm.html";
+		return "ingrediente/ingredientiForm.html";
 	}
 
 	@PostMapping("/cancellaIngrediente/{id}")
@@ -52,7 +52,7 @@ public class IngredienteController {
 		model.addAttribute("ingrediente", new Ingrediente());
 		List<Ingrediente>ingredienti = ingredienteService.findAll();
 		model.addAttribute("ingredienti", ingredienti);
-		return "ingredientiForm.html";
+		return "ingrediente/ingredientiForm.html";
 	}
 
 }

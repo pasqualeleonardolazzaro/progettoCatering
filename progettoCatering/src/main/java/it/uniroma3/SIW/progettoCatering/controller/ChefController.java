@@ -37,7 +37,7 @@ public class ChefController {
 		}
 		List<Chef>chefs = chefService.findAll();
 		model.addAttribute("chefs", chefs);
-		return "chef.html";
+		return "chef/chef.html";
 	}
 
 	@PostMapping("/cancellaChef/{id}")
@@ -52,7 +52,7 @@ public class ChefController {
 		model.addAttribute("chef", new Chef());
 		List<Chef>chefs = chefService.findAll();
 		model.addAttribute("chefs", chefs);
-		return "chef.html";
+		return "chef/chef.html";
 	}
 	
 	//id tra graffe perchè indica un parametro
@@ -60,7 +60,32 @@ public class ChefController {
 	  public String getBuffetPerChef(@PathVariable("id") Long id, Model model) {
 		  Chef chef = chefService.findById(id);
 		  model.addAttribute("chef", chef);
-		  return "buffetPerChef.html";
+		  return "chef/buffetPerChef.html";
 	  }
+	  
+	  @GetMapping("/chefEdit/{id}")
+	  public String editChef(@PathVariable("id") Long id, Model model) {
+		  Chef chef = chefService.findById(id);
+		  model.addAttribute("chef", chef);
+		  return "chef/chefEdit.html";
+	  }
+	  
+	  @PostMapping("/chefEdit/{id}")
+		public String editChefForm(@Valid @ModelAttribute("chef") Chef chef, @PathVariable("id") Long id, BindingResult bindingResults, Model model) {
+			chefValidator.validate(chef,  bindingResults);
+			Chef chefVecchio = chefService.findById(id);
+			if(!bindingResults.hasErrors()) {
+				chefVecchio.setNome(chef.getNome());
+				chefVecchio.setCognome(chef.getCognome());
+				chefVecchio.setNazionalita(chef.getNazionalita());
+				chefVecchio.setBuffet(chef.getBuffet());
+				chefService.save(chefVecchio);
+//				model.addAttribute("chef", model);
+				return "redirect:/chef";
+			}
+			List<Chef>chefs = chefService.findAll();
+			model.addAttribute("chefs", chefs);
+			return "chef/chefEdit.html";
+		}
 
 }

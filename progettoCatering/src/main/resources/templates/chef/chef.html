@@ -71,9 +71,12 @@
 						<form th:action="@{'/cancellaChef' + '/' + ${chef.id}}"
 							method="post">
 							<button>Cancella Chef</button>
-						</form> <a href="buffetPerChef.html"
+						</form> <a
 						th:href="@{'/buffet' + '/' + ${chef.id}}">
-							<button>Vedi buffet proposti</button>
+							<button>Vedi buffet proposti</button></a>
+					 <a
+						th:href="@{'/chefEdit' + '/' + ${chef.id}}">
+							<button>Modifica</button>
 					</a></li>
 				</ul>
 
