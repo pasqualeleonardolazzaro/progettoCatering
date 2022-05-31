@@ -3,7 +3,7 @@
 
 <head>
 <title>Chef Page Form: Catering Management</title>
-<link rel="stylesheet" href="css/main.css" />
+<link rel="stylesheet" href="../css/main.css" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
@@ -13,16 +13,16 @@
 <body>
 	<section class="header-chef">
 		<nav>
-			<img src="img/logo.png">
+			<img src="../img/logo.png">
 			<h1 class="title">The Catering Company</h1>
 			<div class="nav-links">
 				<ul>
-					<li><a href="/"> HOME </a></li>
+					<li><a href="/default"> HOME </a></li>
 					<li><a href=""> ABOUT </a></li>
-					<li><a th:href="@{/chef}"> CHEFS </a></li>
-					<li><a th:href="@{/buffetForm}"> BUFFETS </a></li>
-					<li><a th:href="@{/ingredientiForm}"> INGREDIENTI </a></li>
-					<li><a th:href="@{/piattiForm}"> PIATTI </a></li>
+					<li><a th:href="@{/admin/chef}"> CHEFS </a></li>
+					<li><a th:href="@{/admin/buffetForm}"> BUFFETS </a></li>
+					<li><a th:href="@{/admin/ingredientiForm}"> INGREDIENTI </a></li>
+					<li><a th:href="@{/admin/piattiForm}"> PIATTI </a></li>
 					<li><a href=""> CONTACT </a></li>
 				</ul>
 			</div>
@@ -30,7 +30,7 @@
 
 		<div class="text-box">
 			<div class="form-box">
-				<form th:action="@{/chef}" method="post" th:object="${chef}">
+				<form th:action="@{/admin/chef}" method="post" th:object="${chef}">
 					<div th:if="${#fields.hasGlobalErrors()}">
 						<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">Errore
 							globale</p>
@@ -68,14 +68,14 @@
 					<li th:each="chef : ${chefs}"><a
 						th:text="${chef.nome} + ' ' + ${chef.cognome} + ' ' + ${chef.nazionalita}">Paolo
 							Rossi 18</a>
-						<form th:action="@{'/cancellaChef' + '/' + ${chef.id}}"
+						<form th:action="@{'/admin/cancellaChef' + '/' + ${chef.id}}"
 							method="post">
 							<button>Cancella Chef</button>
 						</form> <a
-						th:href="@{'/buffet' + '/' + ${chef.id}}">
+						th:href="@{'/admin/buffet' + '/' + ${chef.id}}">
 							<button>Vedi buffet proposti</button></a>
 					 <a
-						th:href="@{'/chefEdit' + '/' + ${chef.id}}">
+						th:href="@{'/admin/chefEdit' + '/' + ${chef.id}}">
 							<button>Modifica</button>
 					</a></li>
 				</ul>

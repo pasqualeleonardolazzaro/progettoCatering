@@ -36,13 +36,13 @@ public class PiattoController {
 	@Autowired
 	private PiattoValidator piattoValidator;
 
-	@PostMapping("/piattiForm")
+	@PostMapping("/admin/piattiForm")
 	public String addPiatto(@Valid @ModelAttribute("piatto") Piatto piatto, BindingResult bindingResults, Model model) {
 		piattoValidator.validate(piatto,  bindingResults);
 		if(!bindingResults.hasErrors()) {
 			piattoService.save(piatto);
 			model.addAttribute("buffet", piatto);
-			return "redirect:/piattiForm";
+			return "redirect:/admin/piattiForm";
 		}
 		List<Piatto> piatti = piattoService.findAll();
 		model.addAttribute("piatti", piatti);
@@ -53,14 +53,14 @@ public class PiattoController {
 		return "piatto/piattiForm.html";
 	}
 
-	@PostMapping("/cancellaPiatto/{id}")
+	@PostMapping("/admin/cancellaPiatto/{id}")
 	public String removePiatto(@PathVariable("id") Long id, Model model) {
 		piattoService.remove(id);
-		return  "redirect:/piattiForm";
+		return  "redirect:/admin/piattiForm";
 	}
 
 
-	@GetMapping("/piattiForm")
+	@GetMapping("/admin/piattiForm")
 	public String getPiatti(Model model) {
 		model.addAttribute("piatto", new Piatto());
 		List<Piatto> piatti = piattoService.findAll();
@@ -72,7 +72,7 @@ public class PiattoController {
 		return "piatto/piattiForm.html";
 	}
 	
-	@GetMapping("/ingredienti/{id}")
+	@GetMapping("/admin/ingredienti/{id}")
 	public String getPiattoPerBuffet(@PathVariable("id") Long id, Model model) {
 		  Piatto piatto = piattoService.findById(id);
 		  model.addAttribute("piatto", piatto);

@@ -27,27 +27,27 @@ public class IngredienteController {
 	@Autowired
 	private IngredienteValidator ingredienteValidator;
 
-	@PostMapping("/ingredienteForm")
+	@PostMapping("/admin/ingredienteForm")
 	public String addChef(@Valid @ModelAttribute("ingrediente") Ingrediente ingrediente, BindingResult bindingResults, Model model) {
 		ingredienteValidator.validate(ingrediente,  bindingResults);
 		if(!bindingResults.hasErrors()) {
 			ingredienteService.save(ingrediente);
 			model.addAttribute("ingrediente", ingrediente);
-			return "redirect:/ingredientiForm";
+			return "redirect:/admin/ingredientiForm";
 		}
 		List<Ingrediente>ingredienti = ingredienteService.findAll();
 		model.addAttribute("ingredienti", ingredienti);
 		return "ingrediente/ingredientiForm.html";
 	}
 
-	@PostMapping("/cancellaIngrediente/{id}")
+	@PostMapping("/admin/cancellaIngrediente/{id}")
 	public String removePersona(@PathVariable("id") Long id, Model model) {
 		ingredienteService.remove(id);
-		return  "redirect:/ingredientiForm";
+		return  "redirect:/admin/ingredientiForm";
 	}
 
 
-	@GetMapping("/ingredientiForm")
+	@GetMapping("/admin/ingredientiForm")
 	public String getChef(Model model) {
 		model.addAttribute("ingrediente", new Ingrediente());
 		List<Ingrediente>ingredienti = ingredienteService.findAll();

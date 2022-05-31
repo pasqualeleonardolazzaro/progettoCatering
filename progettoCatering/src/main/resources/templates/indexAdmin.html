@@ -2,8 +2,8 @@
 <html>
 
 <head>
-<title>Ingredienti Page Form: Catering Management</title>
-<link rel="stylesheet" href="../../css/main.css" />
+<title>Home Page: Catering Management</title>
+<link rel="stylesheet" href="css/main.css" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
@@ -11,13 +11,13 @@
 	rel="stylesheet">
 </head>
 <body>
-	<section class="header-ingredienti">
+	<section class="header">
 		<nav>
-			<img src="../../img/logo.png">
+			<img src="img/logo.png">
 			<h1 class="title">The Catering Company</h1>
 			<div class="nav-links">
 				<ul>
-					<li><a href="/default"> HOME </a></li>
+					<li><a href="/"> HOME </a></li>
 					<li><a href=""> ABOUT </a></li>
 					<li><a th:href="@{/admin/chef}"> CHEFS </a></li>
 					<li><a th:href="@{/admin/buffetForm}"> BUFFETS </a></li>
@@ -25,25 +25,14 @@
 					<li><a th:href="@{/admin/piattiForm}"> PIATTI </a></li>
 					<li><a href=""> CONTACT </a></li>
 				</ul>
+				<a th:href="@{/logout}"><button type= "submit">Log out</button></a>
 			</div>
 		</nav>
 
 		<div class="text-box">
-			<div class="elenco">
-			<h1>
-					<a th:text="${piatto.nome} + ': ' + ${piatto.descrizione}">...</a>
-				</h1>
-				<h4>Elenco ingredienti:</h4>
-				<ul>
-					<li th:each="ingrediente : ${piatto.ingredienti}"><a
-						th:text="${ingrediente.nome} + ',origine: ' + ${ingrediente.origine} + ',descrizione: ' + ${ingrediente.descrizione}">...</a>
-						</li>
-				</ul>
-
-			</div>
+			<h1>ADMIN</h1>
+			<p>blablablablabla</p>
 		</div>
-
-
 
 	</section>
 	<!-- - Footer - -->

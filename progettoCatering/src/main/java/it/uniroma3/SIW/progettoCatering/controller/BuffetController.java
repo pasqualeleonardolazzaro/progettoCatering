@@ -30,13 +30,13 @@ public class BuffetController {
 	@Autowired
 	private BuffetValidator buffetValidator;
 
-	@PostMapping("/buffetForm")
+	@PostMapping("/admin/buffetForm")
 	public String addBuffet(@Valid @ModelAttribute("buffet") Buffet buffet, BindingResult bindingResults, Model model) {
 		buffetValidator.validate(buffet,  bindingResults);
 		if(!bindingResults.hasErrors()) {
 			buffetService.save(buffet);
 			model.addAttribute("buffet", buffet);
-			return "redirect:/buffetForm";
+			return "redirect:/admin/buffetForm";
 		}
 		
 		List<Buffet> buffets = buffetService.findAll();
@@ -46,14 +46,14 @@ public class BuffetController {
 		return "buffet/buffetForm.html";
 	}
 
-	@PostMapping("/cancellaBuffet/{id}")
+	@PostMapping("/admin/cancellaBuffet/{id}")
 	public String removeBuffet(@PathVariable("id") Long id, Model model) {
 		buffetService.remove(id);
-		return  "redirect:/buffetForm";
+		return  "redirect:/admin/buffetForm";
 	}
 
 
-	@GetMapping("/buffetForm")
+	@GetMapping("admin/buffetForm")
 	public String getBuffet(Model model) {
 		model.addAttribute("buffet", new Buffet());
 		List<Buffet> buffets = buffetService.findAll();
@@ -63,7 +63,7 @@ public class BuffetController {
 		return "buffet/buffetForm.html";
 	}
 	
-	@GetMapping("/piatti/{id}")
+	@GetMapping("admin/piatti/{id}")
 	public String getPiattoPerBuffet(@PathVariable("id") Long id, Model model) {
 		  Buffet buffet = buffetService.findById(id);
 		  model.addAttribute("buffet", buffet);

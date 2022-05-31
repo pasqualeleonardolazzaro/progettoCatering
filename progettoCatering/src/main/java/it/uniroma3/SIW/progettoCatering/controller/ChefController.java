@@ -27,27 +27,27 @@ public class ChefController {
 	@Autowired
 	private ChefValidator chefValidator;
 
-	@PostMapping("/chef")
+	@PostMapping("/admin/chef")
 	public String addChef(@Valid @ModelAttribute("chef") Chef chef, BindingResult bindingResults, Model model) {
 		chefValidator.validate(chef,  bindingResults);
 		if(!bindingResults.hasErrors()) {
 			chefService.save(chef);
 			model.addAttribute("chef", chef);
-			return "redirect:/chef";
+			return "redirect:/admin/chef";
 		}
 		List<Chef>chefs = chefService.findAll();
 		model.addAttribute("chefs", chefs);
 		return "chef/chef.html";
 	}
 
-	@PostMapping("/cancellaChef/{id}")
+	@PostMapping("/admin/cancellaChef/{id}")
 	public String removePersona(@PathVariable("id") Long id, Model model) {
 		chefService.remove(id);
-		return  "redirect:/chef";
+		return  "redirect:/admin/chef";
 	}
 
 
-	@GetMapping("/chef")
+	@GetMapping("/admin/chef")
 	public String getChef(Model model) {
 		model.addAttribute("chef", new Chef());
 		List<Chef>chefs = chefService.findAll();
@@ -56,21 +56,21 @@ public class ChefController {
 	}
 	
 	//id tra graffe perchè indica un parametro
-	  @GetMapping("/buffet/{id}")
+	  @GetMapping("/admin/buffet/{id}")
 	  public String getBuffetPerChef(@PathVariable("id") Long id, Model model) {
 		  Chef chef = chefService.findById(id);
 		  model.addAttribute("chef", chef);
 		  return "chef/buffetPerChef.html";
 	  }
 	  
-	  @GetMapping("/chefEdit/{id}")
+	  @GetMapping("/admin/chefEdit/{id}")
 	  public String editChef(@PathVariable("id") Long id, Model model) {
 		  Chef chef = chefService.findById(id);
 		  model.addAttribute("chef", chef);
 		  return "chef/chefEdit.html";
 	  }
 	  
-	  @PostMapping("/chefEdit/{id}")
+	  @PostMapping("/admin/chefEdit/{id}")
 		public String editChefForm(@Valid @ModelAttribute("chef") Chef chef, @PathVariable("id") Long id, BindingResult bindingResults, Model model) {
 			chefValidator.validate(chef,  bindingResults);
 			Chef chefVecchio = chefService.findById(id);
@@ -81,7 +81,7 @@ public class ChefController {
 				chefVecchio.setBuffet(chef.getBuffet());
 				chefService.save(chefVecchio);
 //				model.addAttribute("chef", model);
-				return "redirect:/chef";
+				return "redirect:/admin/chef";
 			}
 			List<Chef>chefs = chefService.findAll();
 			model.addAttribute("chefs", chefs);
