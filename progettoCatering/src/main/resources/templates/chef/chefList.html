@@ -2,8 +2,8 @@
 <html>
 
 <head>
-<title>Home Page: Catering Management</title>
-<link rel="stylesheet" href="css/main.css" />
+<title>Chef Page Form: Catering Management</title>
+<link rel="stylesheet" href="../css/main.css" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
@@ -11,9 +11,9 @@
 	rel="stylesheet">
 </head>
 <body>
-	<section class="header">
+	<section class="header-chef">
 		<nav>
-			<img src="img/logo.png">
+			<img src="../img/logo.png">
 			<h1 class="title">The Catering Company</h1>
 			<div class="nav-links">
 				<ul>
@@ -23,17 +23,22 @@
 				</ul>
 			</div>
 		</nav>
-
 		<div class="text-box">
-			<h1>La vostra soddisfazione, la nostra priorit&agrave</h1>
-			<p>La nostra professionalit&agrave &egrave messa al tuo servizio,
-				per seguirti e consigliarti nella scelta di ogni minimo particolare,
-				con la cura e l'attenzione che ogni evento, piccolo o grande che
-				sia, richiede. Ti aiuteremo a vivere momenti indimenticabili, per te
-				ed i tuoi ospiti. La qualit&agrave del nostro servizio insieme alla
-				cortesia ed alla competenza del nostro staff, saranno la nostra
-				garanzia per la buona riuscita del tuo evento.</p>
+			<div class="elenco">
+
+				<h4>Questa &egrave la nostra selezione di chef:</h4>
+				<ul>
+					<li th:each="chef : ${chefs}"><a
+						th:text="${chef.nome} + ' ' + ${chef.cognome} + ' ' + ${chef.nazionalita}">Paolo
+							Rossi 18</a> <a th:href="@{'/buffet' + '/' + ${chef.id}}">
+							<button>Vedi buffet proposti</button>
+					</a></li>
+				</ul>
+
+			</div>
 		</div>
+
+
 
 	</section>
 	<!-- - Footer - -->

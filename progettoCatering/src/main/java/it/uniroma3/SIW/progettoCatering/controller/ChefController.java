@@ -54,6 +54,13 @@ public class ChefController {
 		model.addAttribute("chefs", chefs);
 		return "chef/chef.html";
 	}
+	@GetMapping("/chef")
+	public String getChefList(Model model) {
+		model.addAttribute("chef", new Chef());
+		List<Chef>chefs = chefService.findAll();
+		model.addAttribute("chefs", chefs);
+		return "chef/chefList.html";
+	}
 	
 	//id tra graffe perchè indica un parametro
 	  @GetMapping("/admin/buffet/{id}")
@@ -61,6 +68,14 @@ public class ChefController {
 		  Chef chef = chefService.findById(id);
 		  model.addAttribute("chef", chef);
 		  return "chef/buffetPerChef.html";
+	  }
+	  
+	//id tra graffe perchè indica un parametro
+	  @GetMapping("/buffet/{id}")
+	  public String getBuffetPerChefList(@PathVariable("id") Long id, Model model) {
+		  Chef chef = chefService.findById(id);
+		  model.addAttribute("chef", chef);
+		  return "chef/buffetPerChefList.html";
 	  }
 	  
 	  @GetMapping("/admin/chefEdit/{id}")

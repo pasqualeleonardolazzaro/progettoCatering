@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Buffet Per Chef Page Form: Catering Management</title>
+<link rel="stylesheet" href="../../css/main.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap"
+	rel="stylesheet">
+</head>
+<body>
+	<section class="header-buffet">
+		<nav>
+			<img src="../img/logo.png">
+			<h1 class="title">The Catering Company</h1>
+			<div class="nav-links">
+				<ul>
+					<li><a href="/"> HOME </a></li>
+					<li><a href=""> ABOUT </a></li>
+					<li><a th:href="@{/chef}">OUR CHEFS </a></li>
+				</ul>
+			</div>
+		</nav>
+
+		<div class="text-box">
+			<div class="elenco">
+				<h1>
+					<a
+						th:text="${chef.nome} + ' ' + ${chef.cognome}">...</a>
+				</h1>
+				<h4>Elenco buffet Disponibili:</h4>
+				<ul>
+					<li th:each="buffet : ${chef.buffet}"><a
+						th:text="${buffet.nome} + ', descrizione: ' + ${buffet.descrizione}">...</a>
+						<a href="buffetPerChef.html"
+						th:href="@{'/piatti' + '/' + ${buffet.id}}"><button>Vedi
+								Piatti Proposti</button> </a></li>
+				</ul>
+
+			</div>
+		</div>
+
+
+
+	</section>
+	<!-- - Footer - -->
+
+	<footer> ewlkgn </footer>
+
+
+
+</body>
+
+</html>
