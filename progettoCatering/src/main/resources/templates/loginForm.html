@@ -1,23 +1,46 @@
 <!DOCTYPE html>
+<html>
+
+<head>
+<link rel="stylesheet" href="/css/main.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap"
+	rel="stylesheet">
+<title>Login Page</title>
+</head>
 <body>
-	<div>
-		<h4>Login</h4>
-	</div>
-	<form th:action="@{/login}" method="POST">
+	<section class="header">
+		<nav>
+			<img src="../img/logo.png">
+			<h1 class="title">The Catering Company</h1>
+			<div class="nav-links">
+				<ul>
+					<li><a href="/"> HOME </a></li>
+				</ul>
+			</div>
+		</nav>
+	<div class="elenco">
 		<div>
-			<div>
-				<span>Username:</span>
-				<span><input name="username" type="text" required /></span>
-			</div>		
-			<div>
-				<span>Password:</span>
-				<span><input name="password" type="password" required /></span>
-			</div>
-			<div>
-				<span><button type="submit">Login</button></span>
-			</div>
+			<h4>Login</h4>
 		</div>
-	</form>
-   
+		<form th:action="@{/login}" method="POST">
+			<div>
+				<div>
+					<span>Username:</span> <span><input name="username"
+						type="text" required /></span>
+				</div>
+				<div>
+					<span>Password:</span> <span><input name="password"
+						type="password" required /></span>
+				</div>
+				<div>
+					<span><button type="submit">Login</button></span>
+				</div>
+			</div>
+		</form>
+	</div>
+</section>
 </body>
 </html>

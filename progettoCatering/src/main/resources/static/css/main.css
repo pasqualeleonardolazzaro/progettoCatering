@@ -182,6 +182,7 @@ nav img {
 }
 
 /*-------------footer------------*/
+/*
 footer {
 	background-color: rgb(50, 48, 49);
 	width: 100%;
@@ -190,3 +191,25 @@ footer {
 	color: white;
 	font-size: 20px;
 }
+
+footer p a {
+	color: white;
+	font-size: 20px;
+} */
+footer{
+	text-align:center;
+	padding:30px 10px;
+	line-height: 1.6em;
+	font-size:0.8em;
+	background-color:  rgb(50, 48, 49);;/* primary color*/
+	color: white;
+}
+
+footer a{
+	color:#F0776C; /* secondary-color*/
+}
+
+footer a:hover{
+	color:#FF968C; /* light seconday color*/	
+}
+
