@@ -14,16 +14,21 @@ public class IngredienteService {
 	
 	@Autowired
 	private IngredienteRepository ingredienteRepository;
+	
+	@Autowired
+	private PiattoService piattoService;
 
 	@Transactional
 	public void save(Ingrediente ingrediente) {
 		ingredienteRepository.save(ingrediente);
 	}
 	
+	@Transactional
 	public Ingrediente findById(Long id) {
 		return ingredienteRepository.findById(id).get();
 	}
 	
+	@Transactional
 	public List<Ingrediente> findAll(){
 		List<Ingrediente> ingredienti = new ArrayList<Ingrediente>();
 		for(Ingrediente i : ingredienteRepository.findAll()) {
@@ -31,13 +36,16 @@ public class IngredienteService {
 		}
 		return ingredienti;
 	}
-
+	
+	@Transactional
 	public boolean alreadyExists(Ingrediente ingrediente) {
 		return ingredienteRepository.existsByNomeAndOrigineAndDescrizione(ingrediente.getNome(), ingrediente.getOrigine(), ingrediente.getDescrizione());
 
 	}
 
+	@Transactional
 	public void remove(Long id) {
+		piattoService.deleteIngredienteInPiatto(findById(id));
 		ingredienteRepository.deleteById(id);
 	}
 

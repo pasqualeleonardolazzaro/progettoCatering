@@ -9,19 +9,23 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap"
 	rel="stylesheet">
+<script src="https://kit.fontawesome.com/52fe91be5d.js"
+	crossorigin="anonymous"></script>
+
 </head>
 <body>
 	<section class="header-piatti">
 		<nav>
 			<img src="../../img/logo.png">
 			<h1 class="title">The Catering Company</h1>
-			<div class="nav-links">
+			<div class="nav-links" id="navLinks">
+				<i class="fa-solid fa-circle-xmark" onclick="hideMenu()"></i>
 				<ul>
 					<li><a href="/"> HOME </a></li>
-					<li><a href=""> ABOUT </a></li>
-					<li><a th:href="@{/chef}"> CHEFS </a></li>
+					<li><a th:href="@{/chef}"> OUR CHEFS </a></li>
 				</ul>
 			</div>
+			<i class="fa-solid fa-bars" onclick="showMenu()"></i>
 		</nav>
 
 		<div class="text-box">
@@ -33,7 +37,7 @@
 				<ul>
 					<li th:each="piatto : ${buffet.piatti}"><a
 						th:text="${piatto.nome} + ', descrizione: ' + ${piatto.descrizione}">...</a>
-					<a href="buffetPerChef.html"
+						<a href="buffetPerChef.html"
 						th:href="@{'/ingredienti' + '/' + ${piatto.id}}"><button>Consulta
 								ingredienti</button></a></li>
 				</ul>
@@ -47,11 +51,21 @@
 	<!-- - Footer - -->
 
 	<footer>
-		<p>
-			Author: Pasquale Leonardo Lazzaro<br> <a href="mailto:pas.lazzaro@stud.uniroma3.it">pas.lazzaro@stud.uniroma3.it</a>
-		</p>
-	</footer>
+		The Catering Company | Via Roma, 24 - 00142 Roma (RM) ITALIA| P.Iva
+		000000000 <br> <a href="mailto:pas.lazzaro@stud.uniroma3.it">pas.lazzaro@stud.uniroma3.it</a>
+		| <span itemprop="telephone">+39 347 58 30 387</span> <br>
 
+	</footer>
+	<!---------Javascript for Toggle Menu----- -->
+	<script>
+		var navLinks = document.getElementById("navLinks");
+		function showMenu() {
+			navLinks.style.right = "0";
+		}
+		function hideMenu() {
+			navLinks.style.right = "-200px";
+		}
+	</script>
 
 
 </body>

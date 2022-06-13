@@ -18,15 +18,15 @@ public class ChefService {
 	public void save(Chef chef) {
 		chefRepository.save(chef);
 	}
-	
+	@Transactional
 	public Chef findById(Long id) {
 		return chefRepository.findById(id).get();
 	}
-	
+	@Transactional
 	public boolean alreadyExists(Chef chef) {
 		return chefRepository.existsByNomeAndCognomeAndNazionalita(chef.getNome(), chef.getCognome(), chef.getNazionalita());
 	}
-	
+	@Transactional
 	public List<Chef> findAll(){
 		List<Chef> chefs = new ArrayList<Chef>();
 		for(Chef c : chefRepository.findAll()) {
@@ -34,7 +34,7 @@ public class ChefService {
 		}
 		return chefs;
 	}
-
+	@Transactional
 	public void remove(Long id) {
 		chefRepository.deleteById(id);
 	}

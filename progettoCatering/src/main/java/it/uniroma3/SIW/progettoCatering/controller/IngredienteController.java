@@ -28,7 +28,7 @@ public class IngredienteController {
 	private IngredienteValidator ingredienteValidator;
 
 	@PostMapping("/admin/ingredienteForm")
-	public String addChef(@Valid @ModelAttribute("ingrediente") Ingrediente ingrediente, BindingResult bindingResults, Model model) {
+	public String addPiatto(@Valid @ModelAttribute("ingrediente") Ingrediente ingrediente, BindingResult bindingResults, Model model) {
 		ingredienteValidator.validate(ingrediente,  bindingResults);
 		if(!bindingResults.hasErrors()) {
 			ingredienteService.save(ingrediente);
@@ -41,14 +41,14 @@ public class IngredienteController {
 	}
 
 	@PostMapping("/admin/cancellaIngrediente/{id}")
-	public String removePersona(@PathVariable("id") Long id, Model model) {
+	public String removeIngrediente(@PathVariable("id") Long id, Model model) {
 		ingredienteService.remove(id);
 		return  "redirect:/admin/ingredientiForm";
 	}
 
 
 	@GetMapping("/admin/ingredientiForm")
-	public String getChef(Model model) {
+	public String getIngrediente(Model model) {
 		model.addAttribute("ingrediente", new Ingrediente());
 		List<Ingrediente>ingredienti = ingredienteService.findAll();
 		model.addAttribute("ingredienti", ingredienti);

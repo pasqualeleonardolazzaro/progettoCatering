@@ -4,6 +4,12 @@
 	font-family: 'Dancing Script', cursive;
 }
 
+label {
+	width: 200px;
+	display: inline-block;
+	text-align: left;
+}
+
 .header {
 	min-height: 100vh;
 	width: 100%;
@@ -13,9 +19,41 @@
 	background-position: relative;
 }
 
+.gallery {
+	min-height: 100vh;
+	width: 100%;
+	background-color: #e1e1e1;
+	background-size: cover;
+	background-position: relative;
+	align-content: center;
+	text-align: center;
+	font-size: 28px;
+}
+
+.gallery span {
+	margin: 30px;
+	color: black;
+	text-align: center;
+}
+.gallery div {
+	float: center;
+	border-radius: 8px;
+	width: 60%;
+	color: #e1e1e1;
+	text-align: center;
+	text-align: left;
+	margin: 0 auto;
+	padding-right: 200px;
+	padding-left: 400px;
+	padding-top: 100px;
+	padding-bottom: 100px;
+	font-size: 28px;
+	list-style-position: inside;
+}
+
 button {
 	border-radius: 6px;
-	background-color:#d4c7a3;
+	background-color: #d4c7a3;
 	border: none;
 }
 
@@ -114,8 +152,9 @@ nav img {
 	width: 45%;
 	color: white;
 	background: rgb(255, 255, 255, .2);
-	text-align: justify;
+	text-align: left;
 	margin: 0 auto;
+	padding: 15px;
 	font-size: 28px;
 	border-radius: 8px;
 }
@@ -126,8 +165,9 @@ nav img {
 	width: 45%;
 	color: white;
 	background: rgb(255, 255, 255, .2);
-	text-align: center;
+	text-align: left;
 	margin: 0 auto;
+	padding: 15px;
 	font-size: 28px;
 	list-style-position: inside;
 }
@@ -139,13 +179,14 @@ nav img {
 	color: white;
 	background: rgb(255, 255, 255, .2);
 	text-align: center;
+	text-align: left;
 	margin: 0 auto;
+	padding: 15px;
 	font-size: 28px;
 	list-style-position: inside;
 }
 
-
-.elenco-elem button  {
+.elenco-elem button {
 	font-size: 22px;
 }
 
@@ -169,8 +210,6 @@ nav img {
 	font-size: 25px;
 	text-align: center;
 }
-
-
 
 .text-box h1 {
 	font-size: 65px;
@@ -196,20 +235,51 @@ footer p a {
 	color: white;
 	font-size: 20px;
 } */
-footer{
-	text-align:center;
-	padding:30px 10px;
+footer {
+	text-align: center;
+	padding: 30px 10px;
 	line-height: 1.6em;
-	font-size:0.8em;
-	background-color:  rgb(50, 48, 49);;/* primary color*/
+	font-size: 0.8em;
+	background-color: rgb(50, 48, 49);; /* primary color*/
 	color: white;
 }
 
-footer a{
-	color:#F0776C; /* secondary-color*/
+footer a {
+	color: #F0776C; /* secondary-color*/
 }
 
-footer a:hover{
-	color:#FF968C; /* light seconday color*/	
+footer a:hover {
+	color: #FF968C; /* light seconday color*/
 }
 
+nav .fa-solid {
+	display: none;
+}
+
+@media ( max-width :1200px) {
+	.nav-links ul li {
+		display: block;
+	}
+	.nav-links {
+		position: absolute;
+		background: #3e4479;
+		height: 112vh;
+		width: 200px;
+		top: 0;
+		right: -200px;
+		text-align: left;
+		z-index: 2;
+		transition: 1s;
+	}
+	nav .fa-solid {
+		display: block;
+		color: #fff;
+		margin: 10px;
+		font-size:22px;
+		cursor: pointer;
+	}
+	
+	.nav-links ul {
+		padding: 30px;
+	}
+}

@@ -41,7 +41,7 @@ public class ChefController {
 	}
 
 	@PostMapping("/admin/cancellaChef/{id}")
-	public String removePersona(@PathVariable("id") Long id, Model model) {
+	public String removeChef(@PathVariable("id") Long id, Model model) {
 		chefService.remove(id);
 		return  "redirect:/admin/chef";
 	}

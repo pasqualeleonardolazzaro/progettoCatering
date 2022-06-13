@@ -18,38 +18,37 @@
 			<div class="nav-links">
 				<ul>
 					<li><a href="/default"> HOME </a></li>
-					<li><a href=""> ABOUT </a></li>
 					<li><a th:href="@{/admin/chef}"> CHEFS </a></li>
 					<li><a th:href="@{/admin/buffetForm}"> BUFFETS </a></li>
 					<li><a th:href="@{/admin/ingredientiForm}"> INGREDIENTI </a></li>
 					<li><a th:href="@{/admin/piattiForm}"> PIATTI </a></li>
-					<li><a href=""> CONTACT </a></li>
 				</ul>
 			</div>
 		</nav>
 
 		<div class="text-box">
 			<div class="form-box">
-				<form th:action="@{/admin/piattiForm}" method="post" th:object="${piatto}">
+				<form th:action="@{/admin/piattiForm}" method="post"
+					th:object="${piatto}">
 					<div th:if="${#fields.hasGlobalErrors()}">
 						<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">Errore
 							globale</p>
 					</div>
 					<div>
-						Nome: <input type="text" th:field="*{nome}" />
+						<label>Nome:</label> <input type="text" th:field="*{nome}" />
 						<div>
 							<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
 						</div>
 					</div>
 					<div>
-						Descrizione: <input type="text" th:field="*{descrizione}" />
+						<label>Descrizione:</label> <input type="text" th:field="*{descrizione}" />
 						<div>
 							<span th:if="${#fields.hasErrors('descrizione')}"
 								th:errors="*{descrizione}"></span>
 						</div>
 					</div>
 					<div>
-						Buffet:<select th:field="*{buffet}">
+						<label>Buffet:</label><select th:field="*{buffet}">
 							<th:block th:each="buffet : ${listBuffets} ">
 								<option
 									th:text="${buffet.nome} + ' ' + ${buffet.descrizione} + '-made by: ' + ${buffet.chef.nome} + ' ' + ${buffet.chef.cognome}"
@@ -62,7 +61,7 @@
 						</div>
 					</div>
 					<div>
-						Ingredienti:
+						<label>Ingredienti:</label>
 						<th:block th:each="ingrediente : ${listIngredients} ">
 							<input type="checkbox" th:field="*{ingredienti}"
 								th:text="${ingrediente.nome}" th:value="${ingrediente.id}">
@@ -98,14 +97,6 @@
 
 
 	</section>
-	<!-- - Footer - -->
-
-	<footer>
-		<p>
-			Author: Pasquale Leonardo Lazzaro<br> <a href="mailto:pas.lazzaro@stud.uniroma3.it">pas.lazzaro@stud.uniroma3.it</a>
-		</p>
-	</footer>
-
 
 
 </body>

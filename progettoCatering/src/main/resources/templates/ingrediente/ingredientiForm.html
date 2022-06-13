@@ -22,7 +22,6 @@
 					<li><a th:href="@{/admin/buffetForm}"> BUFFETS </a></li>
 					<li><a th:href="@{/admin/ingredientiForm}"> INGREDIENTI </a></li>
 					<li><a th:href="@{/admin/piattiForm}"> PIATTI </a></li>
-					<li><a href=""> CONTACT </a></li>
 				</ul>
 			</div>
 		</nav>
@@ -36,19 +35,19 @@
 							globale</p>
 					</div>
 					<div>
-						Nome: <input type="text" th:field="*{nome}" />
+						<label>Nome:</label> <input type="text" th:field="*{nome}" />
 						<div>
 							<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
 						</div>
 					</div>
 					<div>
-						Origine: <input type="text" th:field="*{origine}" />
+						<label>Origine:</label> <input type="text" th:field="*{origine}" />
 						<div>
 							<span th:if="${#fields.hasErrors('origine')}" th:errors="*{origine}"></span>
 						</div>
 					</div>
 					<div>
-						Descrizione: <input type="text" th:field="*{descrizione}" />
+						<label>Descrizione:</label><input type="text" th:field="*{descrizione}" />
 						<div>
 							<span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span>
 						</div>

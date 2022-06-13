@@ -3,11 +3,12 @@ package it.uniroma3.SIW.progettoCatering.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
+import static it.uniroma3.SIW.progettoCatering.model.Credentials.ADMIN_ROLE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import it.uniroma3.SIW.progettoCatering.model.User;
 import it.uniroma3.SIW.progettoCatering.repository.UserRepository;
 
@@ -56,3 +57,4 @@ public class UserService {
 		return result;
 	}
 }
+
