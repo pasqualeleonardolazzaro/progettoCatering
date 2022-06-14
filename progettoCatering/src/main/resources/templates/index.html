@@ -9,23 +9,21 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap"
 	rel="stylesheet">
-<script src="https://kit.fontawesome.com/52fe91be5d.js"
-	crossorigin="anonymous"></script>
+
 </head>
 <body>
 	<section class="header">
 		<nav>
 			<img src="img/logo.png">
 			<h1 class="title">The Catering Company</h1>
-			<div class="nav-links" id="navLinks">
-				<i class="fa-solid fa-circle-xmark" onclick="hideMenu()"></i>
+			<div class="nav-links">
 				<ul>
 					<li><a href="/"> HOME </a></li>
 					<li><a th:href="@{/default}"> ADMIN </a></li>
 					<li><a th:href="@{/chef}">OUR CHEFS </a></li>
 				</ul>
 			</div>
-			<i class="fa-solid fa-bars" onclick="showMenu()"></i>
+
 		</nav>
 
 		<div class="text-box">
@@ -42,9 +40,9 @@
 	</section>
 
 	<section class="gallery">
-		<h1>Alcuni dei nostri eventi:</h1>
-		<div>
 
+		<div>
+			<h1>Alcuni scatti dei nostri eventi:</h1>
 			<span> <img src="img/eventi.jpg" width="350px" height="250">
 			</span> <span> <img src="img/location.jpg" width="350px" height="250">
 			</span> <span> <img src="img/eventi_1.jpg" width="350px" height="250">
@@ -60,16 +58,6 @@
 		| <span itemprop="telephone">+39 347 58 30 387</span> <br>
 
 	</footer>
-	<!---------Javascript for Toggle Menu----- -->
-	<script>
-		var navLinks = document.getElementById("navLinks");
-		function showMenu() {
-			navLinks.style.right = "0";
-		}
-		function hideMenu() {
-			navLinks.style.right = "-200px";
-		}
-	</script>
 
 </body>
 

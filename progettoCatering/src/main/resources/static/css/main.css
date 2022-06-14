@@ -35,6 +35,7 @@ label {
 	color: black;
 	text-align: center;
 }
+
 .gallery div {
 	float: center;
 	border-radius: 8px;
@@ -43,12 +44,22 @@ label {
 	text-align: center;
 	text-align: left;
 	margin: 0 auto;
-	padding-right: 200px;
-	padding-left: 400px;
-	padding-top: 100px;
-	padding-bottom: 100px;
+	padding: 150px;
 	font-size: 28px;
 	list-style-position: inside;
+}
+
+.gallery div h1 {
+	text-align: center;
+	color: black;
+}
+
+.gallery div img {
+	margin: 0 auto;
+	padding-right: 40px;
+	padding-left: 40px;
+	padding-top: 50px;
+	padding-bottom: 50px;
 }
 
 button {
@@ -252,34 +263,12 @@ footer a:hover {
 	color: #FF968C; /* light seconday color*/
 }
 
-nav .fa-solid {
+label #btn, label #cancel {
+	color: white;
+	font-size: 30px;
+	float: right;
+	line-height: 80px;
+	margin-right: 40px;
+	cursor: pointer;
 	display: none;
-}
-
-@media ( max-width :1200px) {
-	.nav-links ul li {
-		display: block;
-	}
-	.nav-links {
-		position: absolute;
-		background: #3e4479;
-		height: 112vh;
-		width: 200px;
-		top: 0;
-		right: -200px;
-		text-align: left;
-		z-index: 2;
-		transition: 1s;
-	}
-	nav .fa-solid {
-		display: block;
-		color: #fff;
-		margin: 10px;
-		font-size:22px;
-		cursor: pointer;
-	}
-	
-	.nav-links ul {
-		padding: 30px;
-	}
 }
