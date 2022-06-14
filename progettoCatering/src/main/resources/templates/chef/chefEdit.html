@@ -31,27 +31,27 @@
 			<h1>Modifica Chef</h1>
 				<form th:action="@{'/admin/chefEdit' + '/' + ${chef.id}}" method="post" th:object="${chef}">
 					<div th:if="${#fields.hasGlobalErrors()}">
-						<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">Errore
+						<p th:each="err : ${#fields.globalErrors()}" th:text="${err} th:style="'color:red'"">Errore
 							globale</p>
 					</div>
 					<div>
 						Nome: <input type="text" th:field="*{nome}" />
 						<div>
-							<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+							<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome} th:style="'color:red'""></span>
 						</div>
 					</div>
 					<div>
 						Cognome: <input type="text" th:field="*{cognome}" />
 						<div>
 							<span th:if="${#fields.hasErrors('cognome')}"
-								th:errors="*{cognome}"></span>
+								th:errors="*{cognome}" th:style="'color:red'"></span>
 						</div>
 					</div>
 					<div>
 						Nazionalita: <input type="text" th:field="*{nazionalita}" />
 						<div>
 							<span th:if="${#fields.hasErrors('nazionalita')}"
-								th:errors="*{nazionalita}"></span>
+								th:errors="*{nazionalita}" th:style="'color:red'"></span>
 						</div>
 					</div>
 					<div>

@@ -31,13 +31,13 @@
 				<form th:action="@{/admin/ingredienteForm}" method="post"
 					th:object="${ingrediente}">
 					<div th:if="${#fields.hasGlobalErrors()}">
-						<p th:each="err : ${#fields.globalErrors()}" th:text="${err}">Errore
+						<p th:each="err : ${#fields.globalErrors()}" th:text="${err}" th:style="'color:red'">Errore
 							globale</p>
 					</div>
 					<div>
 						<label>Nome:</label> <input type="text" th:field="*{nome}" />
 						<div>
-							<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+							<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" th:style="'color:red'"></span>
 						</div>
 					</div>
 					<div>
@@ -49,7 +49,7 @@
 					<div>
 						<label>Descrizione:</label><input type="text" th:field="*{descrizione}" />
 						<div>
-							<span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></span>
+							<span th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}" th:style="'color:red'"></span>
 						</div>
 					</div>
 					<div>
