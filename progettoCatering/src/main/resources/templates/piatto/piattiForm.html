@@ -41,7 +41,7 @@
 						</div>
 					</div>
 					<div>
-						<label>Descrizione:</label> <input type="text" th:field="*{descrizione}" th:style="'color:red'" />
+						<label>Descrizione:</label> <input type="text" th:field="*{descrizione}" />
 						<div>
 							<span th:if="${#fields.hasErrors('descrizione')}"
 								th:errors="*{descrizione}" th:style="'color:red'"></span>

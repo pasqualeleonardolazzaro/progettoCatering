@@ -10,6 +10,12 @@ label {
 	text-align: left;
 }
 
+.error {
+	font-size: 80px;
+	color: white;
+	text-align: center;
+}
+
 .header {
 	min-height: 100vh;
 	width: 100%;
@@ -52,6 +58,11 @@ label {
 .gallery div h1 {
 	text-align: center;
 	color: black;
+}
+
+.gallery div p {
+	text-align: center;
+	
 }
 
 .gallery div img {
