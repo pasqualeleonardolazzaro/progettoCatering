@@ -33,6 +33,7 @@
 						<p th:each="err : ${#fields.globalErrors()}" th:text="${err}" th:style="'color:red'">Errore
 							globale</p>
 					</div>
+					Inserimento di un nuovo buffet
 					<div>
 						<label>Nome:</label> <input type="text" th:field="*{nome}" />
 						<div>
