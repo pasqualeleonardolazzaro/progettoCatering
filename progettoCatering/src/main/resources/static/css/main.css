@@ -77,8 +77,8 @@ button {
 	border-radius: 6px;
 	background-color: #d4c7a3;
 	border: none;
+	cursor: pointer;
 }
-
 .header-chef {
 	min-height: 100vh;
 	width: 100%;
@@ -216,14 +216,16 @@ nav img {
 	width: 90%;
 	color: white;
 	position: absolute;
+	bottom: 40px;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	text-align: justify;
+	padding: 5px;
 }
 
 .text-box form {
-	font-size: 35px;
+	font-size: 30px;
 	text-align: center;
 	display: inline-block;
 }
@@ -234,12 +236,12 @@ nav img {
 }
 
 .text-box h1 {
-	font-size: 65px;
+	font-size: 55px;
 }
 
 .text-box p {
 	margin: 10px 0 40px;
-	font-size: 25px;
+	font-size: 20px;
 }
 
 /*-------------footer------------*/

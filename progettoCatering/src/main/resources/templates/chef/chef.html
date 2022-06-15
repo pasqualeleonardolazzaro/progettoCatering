@@ -27,27 +27,29 @@
 		</nav>
 
 		<div class="text-box">
-			<div  class="form-box" >
+			<div class="form-box">
 				<form th:action="@{/admin/chef}" method="post" th:object="${chef}">
 					<div th:if="${#fields.hasGlobalErrors()}">
-						<p th:each="err : ${#fields.globalErrors()}" th:text="${err}" th:style="'color:red'">Errore
-							globale</p>
+						<p th:each="err : ${#fields.globalErrors()}" th:text="${err}"
+							th:style="'color:red'">Errore globale</p>
 					</div>
 					<div>
 						<label>Nome:</label> <input type="text" th:field="*{nome}" />
 						<div>
-							<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" th:style="'color:red'"></span>
+							<span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"
+								th:style="'color:red'"></span>
 						</div>
 					</div>
 					<div>
-						<label>Cognome:</label> <input type="text" th:field="*{cognome}"  />
+						<label>Cognome:</label> <input type="text" th:field="*{cognome}" />
 						<div>
 							<span th:if="${#fields.hasErrors('cognome')}"
 								th:errors="*{cognome}" th:style="'color:red'"></span>
 						</div>
 					</div>
 					<div>
-						<label>Nazionalita:</label> <input type="text" th:field="*{nazionalita}" />
+						<label>Nazionalita:</label> <input type="text"
+							th:field="*{nazionalita}" />
 						<div>
 							<span th:if="${#fields.hasErrors('nazionalita')}"
 								th:errors="*{nazionalita}" th:style="'color:red'"></span>
@@ -69,10 +71,10 @@
 						<form th:action="@{'/admin/cancellaChef' + '/' + ${chef.id}}"
 							method="post">
 							<button>Cancella Chef</button>
-						</form> <a th:href="@{'/admin/buffet' + '/' + ${chef.id}}">
-							<button>Vedi buffet proposti</button>
-					</a> <a th:href="@{'/admin/chefEdit' + '/' + ${chef.id}}">
+						</form> <a th:href="@{'/admin/chefEdit' + '/' + ${chef.id}}" style="display: inline-block;">
 							<button>Modifica</button>
+					</a> <a th:href="@{'/admin/buffet' + '/' + ${chef.id}}">
+							<button>Vedi buffet proposti</button>
 					</a></li>
 				</ul>
 
