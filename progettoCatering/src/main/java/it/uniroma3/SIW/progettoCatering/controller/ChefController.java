@@ -80,22 +80,15 @@ public class ChefController {
 	  
 	  @GetMapping("/admin/chefEdit/{id}")
 	  public String editChef(@PathVariable("id") Long id, Model model) {
-		  Chef chef = chefService.findById(id);
-		  model.addAttribute("chef", chef);
+		  model.addAttribute("chef", chefService.findById(id));
 		  return "chef/chefEdit.html";
 	  }
 	  
 	  @PostMapping("/admin/chefEdit/{id}")
-		public String editChefForm(@Valid @ModelAttribute("chef") Chef chef, @PathVariable("id") Long id, BindingResult bindingResults, Model model) {
+		public String editChefForm(@Valid @ModelAttribute("chef") Chef chef,BindingResult bindingResults, @PathVariable("id") Long id, Model model) {
 			chefValidator.validate(chef,  bindingResults);
-			Chef chefVecchio = chefService.findById(id);
 			if(!bindingResults.hasErrors()) {
-				chefVecchio.setNome(chef.getNome());
-				chefVecchio.setCognome(chef.getCognome());
-				chefVecchio.setNazionalita(chef.getNazionalita());
-				chefVecchio.setBuffet(chef.getBuffet());
-				chefService.save(chefVecchio);
-//				model.addAttribute("chef", model);
+				chefService.save(chef);
 				return "redirect:/admin/chef";
 			}
 			List<Chef>chefs = chefService.findAll();

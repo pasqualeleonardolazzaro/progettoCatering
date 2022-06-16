@@ -13,14 +13,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import it.uniroma3.SIW.progettoCatering.model.Chef;
 import it.uniroma3.SIW.progettoCatering.model.Ingrediente;
 import it.uniroma3.SIW.progettoCatering.service.IngredienteService;
 import it.uniroma3.SIW.progettoCatering.validator.IngredienteValidator;
 
 @Controller
 public class IngredienteController {
-	
+
 	@Autowired
 	private IngredienteService ingredienteService;
 
@@ -55,4 +54,21 @@ public class IngredienteController {
 		return "ingrediente/ingredientiForm.html";
 	}
 
+
+	@GetMapping("/admin/editIngrediente/{id}")
+	public String editIngredienteForm(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("ingrediente",ingredienteService.findById(id));		
+		return "ingrediente/ingredienteEditForm.html";
+	}
+	
+	@PostMapping("/admin/editIngrediente/{id}")
+	public String editIngredienteForm(@PathVariable("id") Long id,@Valid @ModelAttribute("ingrediente") Ingrediente ingrediente, BindingResult bindingResult, Model model) {
+		ingredienteValidator.validate(ingrediente, bindingResult);
+		if(!bindingResult.hasErrors()) {
+			ingredienteService.save(ingrediente);
+			return "redirect:/admin/ingredientiForm";
+		}
+		return "ingrediente/ingredienteEditForm.html";
+	}
+	
 }
