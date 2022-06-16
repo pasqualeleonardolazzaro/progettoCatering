@@ -2,8 +2,8 @@
 <html>
 
 <head>
-<title>Chef Page Form: Catering Management</title>
-<link rel="stylesheet" href="../css/main.css" />
+<title>Piatto Edit Page: Catering Management</title>
+<link rel="stylesheet" href="../../css/main.css" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
@@ -11,9 +11,9 @@
 	rel="stylesheet">
 </head>
 <body>
-	<section class="header-piatti">
+	<section class="header-chef">
 		<nav>
-			<img src="../img/logo.png">
+			<img src="../../img/logo.png">
 			<h1 class="title">The Catering Company</h1>
 			<div class="nav-links">
 				<ul>
@@ -27,14 +27,14 @@
 		</nav>
 
 		<div class="text-box">
-			<div class="form-box">
-				<form th:action="@{/admin/piattiForm}" method="post"
+			<div class="elenco">
+			<h1>Modifica Piatto</h1>
+				<form th:action="@{'/admin/piattoEdit' + '/' + ${piatto.id}}" method="post"
 					th:object="${piatto}">
 					<div th:if="${#fields.hasGlobalErrors()}">
 						<p th:each="err : ${#fields.globalErrors()}" th:text="${err}" th:style="'color:red'">Errore
 							globale</p>
 					</div>
-					Inserimento di un nuovo piatto
 					<div>
 						<label>Nome:</label> <input type="text" th:field="*{nome}" />
 						<div>
@@ -77,30 +77,12 @@
 						Conferma
 						</button>
 					</div>
-				</form>
-			</div>
-			<div class="elenco-elem">
-				<h4>Elenco Piatti:</h4>
-				<ul>
-					<li th:each="piatto : ${piatti}"><a
-						th:text="${piatto.nome} + ' ' + ${piatto.descrizione}+ ' nel buffet: ' + ' ' + ${piatto.buffet.nome} + '-made by: ' + ${piatto.buffet.chef.nome}+ ' ' + ${piatto.buffet.chef.cognome}">...</a>
-						<form th:action="@{'/admin/cancellaPiatto' + '/' + ${piatto.id}}"
-							method="post">
-							<button>Cancella Piatto</button>
-						</form>
-						<a th:href = "@{'/admin/modificaChef' + '/' + ${piatto.id} }"><button>Modifica Piatto</button></a>
-						 <a href="buffetPerChef.html"
-						th:href="@{'/admin/ingredienti' + '/' + ${piatto.id}}"><button>Vedi
-								ingredienti</button></a></li>
-				</ul>
-
 			</div>
 		</div>
 
 
 
 	</section>
-
 
 </body>
 

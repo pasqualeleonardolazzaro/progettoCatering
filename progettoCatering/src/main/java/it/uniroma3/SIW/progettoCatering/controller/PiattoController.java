@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import it.uniroma3.SIW.progettoCatering.model.Buffet;
+import it.uniroma3.SIW.progettoCatering.model.Chef;
 import it.uniroma3.SIW.progettoCatering.model.Ingrediente;
 import it.uniroma3.SIW.progettoCatering.model.Piatto;
 import it.uniroma3.SIW.progettoCatering.service.BuffetService;
@@ -85,5 +86,29 @@ public class PiattoController {
 		  model.addAttribute("piatto", piatto);
 		  return "piatto/ingredientiPerPiattoList.html";
 	  }
+	
+	@GetMapping("/admin/modificaChef/{id}")
+	public String modificaPiatto(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("piatto", piattoService.findById(id));
+		List<Buffet> listBuffets = buffetService.findAll();
+		model.addAttribute("listBuffets", listBuffets);
+		List<Ingrediente> listIngredients = ingredienteService.findAll();
+		model.addAttribute("listIngredients", listIngredients);
+		return "piatto/modificaPiatto.html";
+	}
+	
+	@PostMapping("/admin/piattoEdit/{id}")
+	public String editPiatto(@Valid @ModelAttribute("piatto") Piatto piatto,BindingResult bindingResults, @PathVariable("id") Long id, Model model) {
+		piattoValidator.validate(piatto,  bindingResults);
+		if(!bindingResults.hasErrors()) {
+			piattoService.save(piatto);
+			return "redirect:/admin/piattiForm";
+		}
+		List<Buffet> listBuffets = buffetService.findAll();
+		model.addAttribute("listBuffets", listBuffets);
+		List<Ingrediente> listIngredients = ingredienteService.findAll();
+		model.addAttribute("listIngredients", listIngredients);
+		return "piatto/modificaPiatto.html";
+	}
 
 }
